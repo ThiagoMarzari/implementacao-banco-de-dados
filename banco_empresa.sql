@@ -184,9 +184,8 @@ DECLARE @Salario MONEY,
 		@Nome VARCHAR(50),
 		@data DATE;
 
-
 SET @Nome = 'Thiago Marzari';
-SET @data = '2005-09-25'
+SET @Data = '2001-09-25'
 SET @Salario = '5333.99';
 
 --exibir valores
@@ -199,7 +198,12 @@ PRINT 'O nome do usuario é: '
 	+ ' Sua data de nascimento é: ' 
 	+ CAST(@Data AS VARCHAR(15))
 
-IF @data < '2003-1-1'
+
+IF ((YEAR(GETDATE()) - YEAR(@Data)) = 18 
+	AND MONTH(GETDATE()) > MONTH(@Data)
+	AND DAY(GETDATE()) > DAY(@Data))
 	PRINT 'Voce é maior de idade'
+ELSE IF ((YEAR(GETDATE()) - YEAR(@Data)) > 18 )
+	PRINT 'Maior de idade'
 ELSE 
-	PRINT 'Voce é menor de idade'
+	PRINT 'Menor de idade'
