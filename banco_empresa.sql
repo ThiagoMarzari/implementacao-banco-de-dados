@@ -244,18 +244,18 @@ ELSE
 DECLARE @idade_funci INT, 
 		@nome_funci VARCHAR(50);
 
-SET @nome_funci = 'Fernando';
+SET @nome_funci = 'Ana';
 
 SELECT @idade_funci = DATEDIFF(YEAR, F.Datanasc, GETDATE())
 FROM FUNCIONARIO AS F
 WHERE F.Pnome = @nome_funci
 
 PRINT 'Idade do funcionario ' + @nome_funci 
-	+ ' : ' + CAST(@idade_funci AS VARCHAR(15));
+	+ ': ' + CAST(@idade_funci AS VARCHAR(15));
 
 IF ((@idade_funci >= 60))
 	PRINT 'Funcionario ' + @nome_funci + 
-	' quase aposentado';
+	' está quase aposentado';
 ELSE 
 	PRINT 'Ainda tem que trabalhar!'
 
