@@ -235,3 +235,27 @@ IF (@salario_funcionario > @media_salarial)
 	PRINT 'O ' + @nome_func + ' recebe acima da media' ;
 ELSE 
 	PRINT 'Recebe abaixo da media: ' + @nome_func;
+
+
+--Verificar se um Funcionário 
+--Está Próximo da Aposentadoria, considerar a
+--idade para aposentadoria de 60 anos.
+
+DECLARE @idade_funci INT, 
+		@nome_funci VARCHAR(50);
+
+SET @nome_funci = 'Fernando';
+
+SELECT @idade_funci = DATEDIFF(YEAR, F.Datanasc, GETDATE())
+FROM FUNCIONARIO AS F
+WHERE F.Pnome = @nome_funci
+
+PRINT 'Idade do funcionario ' + @nome_funci 
+	+ ' : ' + CAST(@idade_funci AS VARCHAR(15));
+
+IF ((@idade_funci >= 60))
+	PRINT 'Funcionario ' + @nome_funci + 
+	' quase aposentado';
+ELSE 
+	PRINT 'Ainda tem que trabalhar!'
+
