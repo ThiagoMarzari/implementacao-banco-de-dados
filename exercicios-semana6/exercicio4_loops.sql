@@ -33,18 +33,16 @@ INSERT INTO PRODUTOS (Nome, Preco) VALUES
 ('Produto E', 120.00);
 
 
-DECLARE @Indice INT, 
-		@PrecoLimite INT = 100,
+DECLARE @indice INT = 1,
 		@TotalProdutos INT;
+SET @totalProdutos = (SELECT COUNT(*) FROM Produtos);
 
-SET @TotalProdutos = (SELECT COUNT(*) FROM Produtos);
 
-WHILE @Indice <= @TotalProdutos
+WHILE @indice <= @totalProdutos
 BEGIN
-	SELECT *
-	FROM PRODUTOS
 
-	
-	print @indice;
-	SET @Indice = @Indice + 1;
+    SELECT *
+	FROM PRODUTOS AS P
+
+	SET @indice = @indice + 1;
 END
