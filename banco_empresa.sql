@@ -259,3 +259,24 @@ IF ((@idade_funci >= 60))
 ELSE 
 	PRINT 'Ainda tem que trabalhar!'
 
+
+
+
+
+--Verificar se um Funcionário Já Recebeu Bônus Este Ano
+DECLARE @nome_funcionario VARCHAR(50) = 'Jorge',
+	@bonus DECIMAL(10, 2);
+
+SELECT @bonus = F.Bonus
+	FROM FUNCIONARIO AS F
+	WHERE F.Pnome = @nome_funcionario
+
+IF @bonus >= 0
+	PRINT @nome_funcionario + ' recebeu um bonus de R$' 
+	+ CAST(@bonus AS VARCHAR(15));
+ELSE IF (@bonus IS NULL)
+	PRINT @nome_funcionario + 'não recebeu um bonus de ' 
+	+ CAST(@bonus AS VARCHAR(15));
+
+
+select * from FUNCIONARIO
