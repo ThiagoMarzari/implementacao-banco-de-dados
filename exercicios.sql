@@ -12,6 +12,7 @@ FROM FUNCIONARIO AS F;
 
 --encontrar funcionarios admitidos nos ultimos 6 meses
 
+--Testar só com meses, sem utilizar o ano de admissao ou dias
 SELECT F.Pnome, 
 		F.Data_Admissao,
 		CASE
@@ -21,3 +22,6 @@ SELECT F.Pnome,
 			ELSE 'NAO'
 		END AS 'admitido nos últimos 6 meses?'
 FROM FUNCIONARIO AS F
+
+--Fazer exercícios
+--https://github.com/Herysson/Implementacao-de-Banco-de-Dados/blob/main/Aula%2004%20-%20Vari%C3%A1veis%20-%20Convers%C3%B5es%20-%20If%20Else%20-%20While.md
