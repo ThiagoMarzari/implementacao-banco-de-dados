@@ -210,4 +210,28 @@ IF ((YEAR(GETDATE()) - YEAR(@Data)) = 18
 ELSE IF ((YEAR(GETDATE()) - YEAR(@Data)) > 18 )
 	PRINT 'Voce é maior de idade'
 ELSE 
-	PRINT 'Menor de idade'
+	PRINT 'Menor de idade';
+
+
+
+--Verificar se um Funcionário Recebe Abaixo da Média Salarial
+DECLARE @media_salarial FLOAT,
+		@salario_funcionario FLOAT,
+		@nome_func VARCHAR(50);
+
+SET @nome_func = 'Carlos';
+
+SELECT @media_salarial = AVG(salario) FROM FUNCIONARIO;
+
+SELECT @salario_funcionario = Salario
+	FROM FUNCIONARIO AS F
+	WHERE F.Pnome = @nome_func
+
+PRINT 'Media salarial: ' + CAST(@media_salarial as VARCHAR(20))
+		+ ' Salario do '+ @nome_func 
+		+ ' : ' + CAST(@salario_funcionario AS VARCHAR(20));
+
+IF (@salario_funcionario > @media_salarial)
+	PRINT 'O ' + @nome_func + ' recebe acima da media' ;
+ELSE 
+	PRINT 'Recebe abaixo da media: ' + @nome_func;
