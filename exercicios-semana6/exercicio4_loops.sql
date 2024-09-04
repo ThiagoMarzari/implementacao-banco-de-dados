@@ -34,15 +34,44 @@ INSERT INTO PRODUTOS (Nome, Preco) VALUES
 
 
 DECLARE @indice INT = 1,
-		@TotalProdutos INT;
+		@TotalProdutos INT,
+		@precoLimite INT = 100
 SET @totalProdutos = (SELECT COUNT(*) FROM Produtos);
 
+DECLARE cursorProdutos CURSOR FOR
+	SELECT Nome, Preco FROM PRODUTOS;
 
+OPEN cursorProdutos;
+
+DECLARE @Nome VARCHAR(50);
+DECLARE @Preco DECIMAL(10, 2);
+
+FETCH NEXT FROM cursorProdutos INTO @Nome, @Preco;
+
+WHILE @@FETCH_STATUS = 0
 WHILE @indice <= @totalProdutos
 BEGIN
 
-    SELECT *
-	FROM PRODUTOS AS P
+	IF @Preco > @PrecoLimite
+	BEGIN
+        PRINT @Nome;
+		PRINT @Preco
+	END
+
+    FETCH NEXT FROM cursorProdutos INTO @Nome, @Preco;
 
 	SET @indice = @indice + 1;
+END
+
+CLOSE cursorProdutos;
+DEALLOCATE cursorProdutos;
+
+--4.4. Loop While com Incremento Condicional
+DECLARE @numero INT = 2;
+
+
+WHILE @numero < 1000
+BEGIN 
+	PRINT @numero
+	SET @numero = @numero * 2;
 END
