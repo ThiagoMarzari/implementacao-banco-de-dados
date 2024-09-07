@@ -33,6 +33,6 @@ END
 
 DECLARE @Resultado FLOAT;
 
-EXEC CalcularDesconto 12, 2, @precoFinal = @Resultado OUTPUT;
+EXEC CalcularDesconto 12, 3, @precoFinal = @Resultado OUTPUT;
 
 SELECT @Resultado AS MediaCalculada;
