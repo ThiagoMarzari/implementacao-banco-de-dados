@@ -17,5 +17,4 @@ EXEC InserirNovoDepartamento
 	@Cpf_gerente = '12345218966',
 	@Data_inicio_gerente = '2004-04-23'
 
-
-SELECT * FROM DEPARTAMENTO
+SELECT * FROM DEPARTAMENTO;

@@ -1,0 +1,14 @@
+
+
+
+CREATE PROCEDURE ListarFuncionariosPorDepartamento 
+	@Depart VARCHAR(30)
+AS
+BEGIN
+	IF (@Depart = NULL)
+		SELECT * FROM FUNCIONARIO;
+	ELSE
+		SELECT * FROM FUNCIONARIO AS F
+		JOIN DEPARTAMENTO as D ON f.Dnr = d.Dnumero
+		ORDER BY D.Dnome ASC
+END
