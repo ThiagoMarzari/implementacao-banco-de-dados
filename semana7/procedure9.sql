@@ -1,14 +1,19 @@
 
 
 
-CREATE PROCEDURE ListarFuncionariosPorDepartamento 
-	@Depart VARCHAR(30)
+ALTER PROCEDURE ListarFuncionariosPorDepartamento 
+	@Depart VARCHAR(30) = ''
 AS
 BEGIN
-	IF (@Depart = NULL)
+	IF (@Depart = '')
+	BEGIN
 		SELECT * FROM FUNCIONARIO;
+		PRINT 'NULL valor'
+	END
 	ELSE
 		SELECT * FROM FUNCIONARIO AS F
 		JOIN DEPARTAMENTO as D ON f.Dnr = d.Dnumero
-		ORDER BY D.Dnome ASC
+		WHERE D.Dnome = @Depart
 END
+
+EXEC ListarFuncionariosPorDepartamento 'Matriz'
