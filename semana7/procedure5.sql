@@ -1,9 +1,9 @@
 
 
-ALTER PROCEDURE AtualizaSalarioFuncionario (@Cpf VARCHAR(30), @salario INT)
+ALTER PROCEDURE AtualizaSalarioFuncionario (@Cpf VARCHAR(30), @salario DECIMAL(10 ,2))
 AS
 BEGIN
-	IF EXISTS (SELECT * FROM FUNCIONARIO AS F
+	IF EXISTS (SELECT 1 FROM FUNCIONARIO AS F
 	WHERE @Cpf = F.Cpf)
 	BEGIN
 		UPDATE FUNCIONARIO
@@ -13,7 +13,7 @@ BEGIN
 		SELECT * FROM FUNCIONARIO
 	END
 	ELSE 
-		PRINT 'nao existe'
+		PRINT 'Funcionario não encontrado'
 END
 
 select cpf
