@@ -1,7 +1,10 @@
 
 
-CREATE PROCEDURE exibeNome
+CREATE PROCEDURE ExibeNome
 AS
 BEGIN
 	PRINT 'Thiago Marzari'
-END
+END;
+
+EXEC ExibeNome;
+
