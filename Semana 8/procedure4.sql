@@ -7,14 +7,14 @@ CREATE PROCEDURE RetornaNomeCompleto
 AS
 BEGIN
 	
-	IF @nomeCompleto IS NULL
-		SET @nomeCompleto = 'CPF não encontrado!'
 
 	SELECT CONCAT(f.Pnome, ' ' + f.Minicial, ' ' + f.Unome ) AS 'Nome completo'
 	FROM FUNCIONARIO AS F
 	WHERE @Cpf = f.Cpf
 	RETURN
 
+	IF @nomeCompleto IS NULL
+		SET @nomeCompleto = 'CPF não encontrado!'
 END
 
 Select * from FUNCIONARIO
