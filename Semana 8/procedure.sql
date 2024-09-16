@@ -14,25 +14,35 @@ ALTER PROCEDURE InserirNovoFuncionario (
 )
 AS
 BEGIN
-	IF EXISTS (SELECT F.Pnome FROM FUNCIONARIO AS F WHERE @Pnome != f.Pnome)
-	INSERT INTO FUNCIONARIO (Pnome, Minicial, Unome, Cpf, Datanasc, Endereco,
-	Sexo, Salario, Cpf_supervisor, Dnr)
-	VALUES (@Pnome, @Minicial, @Unome, @Cpf, @Datanasc, @Endereco,
-	@Sexo, @Salario, @Cpf_supervisor, @Dnr)
-
+	IF EXISTS (SELECT 1 
+		FROM FUNCIONARIO 
+		WHERE @Pnome = Pnome 
+		AND @Minicial = Minicial
+		AND @Unome = Unome)
+		BEGIN
+			PRINT 'ESse funcionario ja existe'
+			RETURN
+		END
+	
+		--Se não existir ainda
+		INSERT INTO FUNCIONARIO (Pnome, Minicial, Unome, Cpf, Datanasc, Endereco,
+		Sexo, Salario, Cpf_supervisor, Dnr)
+		VALUES (@Pnome, @Minicial, @Unome, @Cpf, @Datanasc, @Endereco,
+		@Sexo, @Salario, @Cpf_supervisor, @Dnr)
+		PRINT 'Funcionario inserido com sucesso'
 END
 
 EXEC InserirNovoFuncionario 
-	@Pnome = 'Thiago',
+	@Pnome = 'Alice',
 	@Minicial = 'M',
 	@Unome = 'Rossato',
-	@Cpf = '21765439300',
+	@Cpf = '21061499383',
 	@Datanasc = '2002-09-25',
 	@Endereco = 'Rua tal',
 	@Sexo = 'M',
 	@Salario = 23414,
 	@Cpf_supervisor = '21765439300',
-	@Dnr = 72
+	@Dnr = 4
 
 
 select * from FUNCIONARIO
