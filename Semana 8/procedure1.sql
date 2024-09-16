@@ -10,4 +10,4 @@ BEGIN
 	WHERE F.Salario BETWEEN @valorMin AND @valorMax
 END
 
-EXEC ListaFuncionarioEntreDoisValores 25000, 30000
+EXEC ListaFuncionarioEntreDoisValores 25000, 35000
