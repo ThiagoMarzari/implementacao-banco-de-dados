@@ -1,0 +1,5 @@
+CREATE PROCEDURE InserirNovaCategoria
+AS
+BEGIN
+	
+END
