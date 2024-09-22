@@ -128,7 +128,59 @@ GROUP BY D.Dnome
 HAVING 
 COUNT(F.Cpf) > 3;
 
+SELECT F.*
+FROM FUNCIONARIO F
+WHERE EXISTS (SELECT 1
+	FROM DEPARTAMENTO D
+	WHERE D.Cpf_gerente = F.Cpf)
+
+SELECT D.Dnome, D.Dnumero
+FROM DEPARTAMENTO D
+WHERE EXISTS (
+	SELECT 1
+	FROM PROJETO P
+	WHERE P.Dnum = D.Dnumero
+	);
+
+SELECT Pnome, Unome, Salario
+FROM FUNCIONARIO
+WHERE SALARIO > ANY (
+	SELECT Salario
+	FROM FUNCIONARIO
+	JOIN DEPARTAMENTO ON Dnr = Dnumero
+	WHERE Dnome = 'Administração'
+	)
+
+DECLARE @IdadeJen INT;
+
+SELECT @IdadeJen = DATEDIFF(YEAR, Datanasc, GETDATE())
+FROM FUNCIONARIO
+WHERE Pnome = 'Jennifer'
+PRINT 'Idade da Jennifer: ' + CAST(@IdadeJen AS VARCHAR)
+
+DECLARE @NomeDep VARCHAR(15);
+
+SELECT @NomeDep = (
+	SELECT Dnome
+	FROM DEPARTAMENTO
+	WHERE Dnumero = 2
+)
+
+PRINT 'Nome do departamento' + @NomeDep
 
 
- 
-SELECT * FROM PROJETO
+DECLARE @MediaSalarial DECIMAL(10, 2), @NomeFuncionario VARCHAR(20), @Salario DECIMAL(10, 2);
+
+SET @NomeFuncionario = 'Jorge';
+
+SELECT @MediaSalarial = AVG(Salario) FROM FUNCIONARIO
+
+SELECT @Salario = Salario FROM FUNCIONARIO WHERE Pnome = @NomeFuncionario
+
+IF @Salario < @MediaSalarial
+	PRINT 'RECEBE ABAIXO DA MEDIA SALARIAL'
+ELSE
+	PRINT 'RECEBE ACIMA DA MEDIA SALARIAL'
+
+
+SELECT * FROM FUNCIONARIO
