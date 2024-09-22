@@ -1,11 +1,11 @@
 
-
-ALTER PROCEDURE InserirNovaCategoria
+--Crie uma procedure que permita inserir uma nova categoria na tabela 'Categoria'
+CREATE PROCEDURE InserirNovaCategoria
 AS
 BEGIN
-	INSERT INTO Categoria (Id, Nome)
+	INSERT INTO Categoria (tipo_categoria)
 	VALUES 
-	(1, 'Jogos'), (2, 'Celulares'), (3, 'Videogames');
+	('Jogos'), ('Videogames'), ('Computadores');
 END
 
 EXEC InserirNovaCategoria;
