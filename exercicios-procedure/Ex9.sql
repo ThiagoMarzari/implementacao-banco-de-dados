@@ -1,7 +1,10 @@
---Crie uma procedure que listre os livros publicados em um ano especifico
+--Crie uma procedure que liste os livros publicados em um ano especifico
+CREATE PROCEDURE ListaLivrosPublicadosEmAno
+AS
+BEGIN
+	SELECT *
+	FROM Livro L
+	WHERE L.ano = 2000;
+END
 
-SELECT *
-FROM Livro L
-WHERE L.ano = 2000;
-
-SELECT * FROM Livro
+EXEC ListaLivrosPublicadosEmAno

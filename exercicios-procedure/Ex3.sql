@@ -1,5 +1,5 @@
 
-
+--Desenvolva uma procedure para adicionar um novo autor a tabela Autor
 CREATE PROCEDURE InserirNovoAutor 
 	@nome VARCHAR(100), 
 	@nacionalidade VARCHAR(50)

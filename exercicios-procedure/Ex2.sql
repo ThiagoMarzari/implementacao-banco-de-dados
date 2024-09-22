@@ -1,4 +1,7 @@
 
+--Crie uma procedure para atualizar os detalhes de um livro
+--pelo isbn
+
 CREATE PROCEDURE AtualizarDetalhesLivro
 AS
 BEGIN
