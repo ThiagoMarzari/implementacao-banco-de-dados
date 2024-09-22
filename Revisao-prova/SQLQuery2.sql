@@ -78,7 +78,7 @@ JOIN PROJETO P
 ON D.Dnumero = P.Dnum
 WHERE P.Projnome = 'ProdutoX'
 
-SELECT  *
+SELECT DISTINCT F.*
 FROM FUNCIONARIO F
 JOIN DEPARTAMENTO D
 ON D.Dnumero = F.Dnr
@@ -86,7 +86,49 @@ JOIN PROJETO P
 ON D.Dnumero = P.Dnum
 WHERE P.Projlocal LIKE 'Mauá'
 
+SELECT 
+f.sexo, COUNT(F.Sexo) AS 'Número de funcionarios'
+FROM FUNCIONARIO F
+GROUP BY F.Sexo
+
+SELECT D.Dnome,COUNT(F.Cpf)
+FROM FUNCIONARIO F
+JOIN DEPARTAMENTO D
+ON D.Dnumero = F.Dnr
+GROUP BY D.Dnome
+
+SELECT D.Dnome, AVG(F.Salario)
+FROM FUNCIONARIO F
+JOIN DEPARTAMENTO D
+ON D.Dnumero = F.Dnr
+GROUP BY D.Dnome
+
+SELECT P.Projnome, AVG(TE.Horas)
+FROM FUNCIONARIO F
+JOIN DEPARTAMENTO D
+ON D.Dnumero = F.Dnr
+JOIN PROJETO P
+ON P.Dnum = D.Dnumero
+JOIN TRABALHA_EM TE
+ON TE.Pnr = P.Projnumero
+GROUP BY P.Projnome
+
+SELECT D.Dnome,MAX(F.Salario)
+FROM FUNCIONARIO F
+JOIN DEPARTAMENTO D
+ON D.Dnumero = F.Dnr
+GROUP BY D.Dnome
+
+SELECT 
+D.Dnome, COUNT(F.Cpf) AS NumFuncionarios
+FROM FUNCIONARIO F
+JOIN DEPARTAMENTO D
+ON D.Dnumero = F.Dnr
+GROUP BY D.Dnome
+HAVING 
+COUNT(F.Cpf) > 3;
 
 
+
+ 
 SELECT * FROM PROJETO
-
