@@ -1,0 +1,28 @@
+
+
+
+BEGIN TRANSACTION
+
+DECLARE @ContaOrigem VARCHAR(24) = 'Thiago';
+DECLARE @Valor DECIMAL(10, 2) = 2000;
+
+IF (SELECT Saldo 
+	FROM Conta
+	WHERE Nome = @ContaOrigem) >= @Valor
+BEGIN
+	UPDATE Conta
+	SET Saldo = Saldo - @Valor
+	WHERE Nome = @ContaOrigem;
+	PRINT 'TRANSACAO REALIZADA'
+
+	COMMIT TRANSACTION;
+END
+ELSE
+BEGIN
+	PRINT 'SALDO INSUFICIENTE'
+
+	ROLLBACK TRANSACTION;
+END
+
+SELECT * FROM Conta
+
