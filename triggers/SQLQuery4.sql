@@ -14,10 +14,9 @@ valor sejam adicionados ao banco de dados.
 --Inserindo novo funcionario
 INSERT FUNCIONARIO(Pnome, Unome, Cpf, Salario)
 VALUES
-('Thiago', 'Rossato', '41215432121', 3000);
+('Thiago', 'Rossato', '41115432121', 300);
 
 select * from FUNCIONARIO
-
 
 ALTER TRIGGER trg_salario
 ON FUNCIONARIO
@@ -34,7 +33,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		PRINT 'Salario abaixo ' + CONVERT(VARCHAR(10), @novoSalario);
+		RAISERROR('O salário não pode ser menor que R$ 1.000,00', 16, 1);
 		ROLLBACK TRANSACTION;
 	END
 END
