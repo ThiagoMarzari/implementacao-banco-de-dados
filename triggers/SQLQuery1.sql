@@ -12,7 +12,7 @@ PRINT 'Olá mundo';
 
 INSERT FUNCIONARIO(Pnome, Unome, Cpf)
 VALUES
-('Rodrigo', 'Rossato', '98765432121');
+('Thiago', 'Rossato', '98765432121');
 
 
 CREATE TRIGGER olaDenovo
@@ -28,7 +28,7 @@ PRINT 'Olá de novo!'
 --ENABLE | DISABLE
 
 ALTER TABLE FUNCIONARIO
-ENABLE TRIGGER olaDenovo
+DISABLE TRIGGER olaDenovo
 
 --Visualizar triggers de uma tabela especifica
 EXEC sp_helptrigger @tabname =	FUNCIONARIO
@@ -39,4 +39,22 @@ FROM sys.triggers
 WHERE is_disabled = 0 OR is_disabled = 1
 
 
+CREATE TRIGGER triggerAfterFuncionarios
+ON FUNCIONARIO
+AFTER INSERT, UPDATE
+AS
+IF UPDATE(Pnome)
+	BEGIN
+		PRINT 'O nome foi alterado'
+	END
+ELSE
+	BEGIN
+		PRINT 'Nome não foi modificado'
+	END
 
+
+UPDATE FUNCIONARIO
+SET Pnome = 'Thiago'
+WHERE Cpf = '98765432121';
+
+SELECT * FROM FUNCIONARIO
