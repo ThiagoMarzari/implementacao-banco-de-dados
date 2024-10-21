@@ -3,12 +3,12 @@ INSERT FUNCIONARIO(Pnome, Unome, Cpf)
 VALUES
 ('Gustavo', 'Rossato', '11715432121');
 
-SELECT * FROM FUNCIONARIO
+SELECT * FROM FUNCIONARIO;
 
 --Crie um trigger que não permita a inserção 
 --de um funcionário com o mesmo nome completo (Pnome, Minicial, Unome)
 --Esse tipo de operação não compensa fazer com o AFTER OF, pois o AFTER OF RODA DEPOIS DO EVENTO ENTÃO FICA MAIS DIFICIL DE CHECAR SE O FUNCIONOARIO JÁ EXISTE
-ALTER TRIGGER insert_funcionario
+CREATE TRIGGER insert_funcionario
 ON FUNCIONARIO
 INSTEAD OF INSERT
 AS
@@ -29,5 +29,6 @@ BEGIN
         SELECT Pnome, Unome, Cpf
         FROM inserted; -- Pego os dados da pessoa que insere no insert acima
 		PRINT 'Funcionario adicionado com sucesso';
+		COMMIT TRANSACTION; -- TAMBÉM NÃO É OBRIGATÓRIO
 	END
 END
