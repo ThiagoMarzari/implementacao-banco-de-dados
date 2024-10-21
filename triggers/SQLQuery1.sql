@@ -1,0 +1,12 @@
+
+INSERT FUNCIONARIO(Pnome, Unome, Cpf)
+VALUES
+('Rodrigo', 'Rossato', '98765432121');
+
+select * from FUNCIONARIO
+
+CREATE TRIGGER olaMundo
+ON FUNCIONARIO
+AFTER INSERT
+AS
+PRINT 'Olá mundo';
