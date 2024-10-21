@@ -6,12 +6,18 @@ Operacao VARCHAR(10),
 Data_Hora DATETIME DEFAULT GETDATE()
 );
 
-CREATE TRIGGER afterInsertFuncionario
+CREATE TRIGGER logInsertFuncionario
 ON FUNCIONARIO
 AFTER INSERT
 AS
 BEGIN
-	INSERT INTO Log_Funcionario(Cpf, Operacao, Data_Hora)
-	VALUES
-	()
+	INSERT INTO Log_Funcionario(Cpf, Operacao)
+	SELECT Cpf, 'INSERT' 
+	FROM inserted
 END
+
+INSERT FUNCIONARIO(Pnome, Unome, Cpf)
+VALUES
+('Paulo', 'Rossato', '91765432121');
+
+select * from Log_Funcionario
