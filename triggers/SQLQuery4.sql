@@ -11,6 +11,7 @@ impedindo que funcionários com salários abaixo desse
 valor sejam adicionados ao banco de dados.
 */
 
+--Inserindo novo funcionario
 INSERT FUNCIONARIO(Pnome, Unome, Cpf, Salario)
 VALUES
 ('Thiago', 'Rossato', '41215432121', 3000);
