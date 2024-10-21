@@ -38,7 +38,7 @@ SELECT *
 FROM sys.triggers
 WHERE is_disabled = 0 OR is_disabled = 1
 
-
+--POsso usar ALTER TRIGGER para alterar o trigger
 CREATE TRIGGER triggerAfterFuncionarios
 ON FUNCIONARIO
 AFTER INSERT, UPDATE
@@ -52,9 +52,8 @@ ELSE
 		PRINT 'Nome não foi modificado'
 	END
 
-
 UPDATE FUNCIONARIO
 SET Pnome = 'Thiago'
 WHERE Cpf = '98765432121';
 
-SELECT * FROM FUNCIONARIO
+SELECT * FROM FUNCIONARIO;
