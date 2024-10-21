@@ -15,9 +15,28 @@ VALUES
 ('Rodrigo', 'Rossato', '98765432121');
 
 
-
 CREATE TRIGGER olaDenovo
 ON FUNCIONARIO
-INSTEAD OF INSERT -- substituiu a operação que causou o disparo
+INSTEAD OF INSERT -- substitui a operação que causou o disparo
 AS
 PRINT 'Olá de novo!'
+
+
+-----------------------------------------
+
+--Habilitar e desabilitar os triggers
+--ENABLE | DISABLE
+
+ALTER TABLE FUNCIONARIO
+ENABLE TRIGGER olaDenovo
+
+--Visualizar triggers de uma tabela especifica
+EXEC sp_helptrigger @tabname =	FUNCIONARIO
+
+--Visualizar todos os triggers do bd
+SELECT *
+FROM sys.triggers
+WHERE is_disabled = 0 OR is_disabled = 1
+
+
+
