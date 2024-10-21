@@ -28,7 +28,7 @@ PRINT 'Olá de novo!'
 --ENABLE | DISABLE
 
 ALTER TABLE FUNCIONARIO
-DISABLE TRIGGER olaDenovo
+DISABLE TRIGGER olaMundo
 
 --Visualizar triggers de uma tabela especifica
 EXEC sp_helptrigger @tabname =	FUNCIONARIO

@@ -11,5 +11,7 @@ ON FUNCIONARIO
 AFTER INSERT
 AS
 BEGIN
-	
+	INSERT INTO Log_Funcionario(Cpf, Operacao, Data_Hora)
+	VALUES
+	()
 END
