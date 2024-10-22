@@ -1,0 +1,4 @@
+-- Implemente uma transação que simule uma compra.
+--Verifique o estoque antes de permitir a compra e,
+--se o estoque for insuficiente, reverta a transação. 
+--Use uma tabela chamada PRODUTO para registrar o estoque dos produtos.
