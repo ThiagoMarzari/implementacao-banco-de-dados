@@ -32,3 +32,7 @@ INSERT INTO tbl_pessoa (nome_pessoa, nome_pet, num_pet, idade, sexo_pet)
 select * from tbl_pessoa
 
 INSERT INTO tbl_pessoa VALUES ('Juca', 'Gargameu', 0, 30, 'M'); -- num_pet = 0, vai dar erro
+INSERT INTO tbl_pessoa VALUES ('Juca', 'Gargameu', 1, 15, 'M'); -- Menor de idade
+INSERT INTO tbl_pessoa VALUES ('Juca', 'Gargameu', 1, 30, '0'); -- Sexo invalido
+INSERT INTO tbl_pessoa VALUES ('Juca', 'Gargameu', -15, 30, 'F'); -- Erro num_pet < 1
+INSERT INTO tbl_pessoa VALUES ('Juca', 'Gargameu', 15, 30, 'F'); -- Agora vai
