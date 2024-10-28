@@ -21,4 +21,14 @@ CREATE TABLE tbl_pessoa(
 	sexo_pet CHAR CHECK (sexo_pet IN ('M', 'F', 'N'))
 );
 
+
+--Testando as restrições criadas
+
+INSERT INTO tbl_pessoa (nome_pessoa, nome_pet, num_pet, idade, sexo_pet) 
+	VALUES 
+	('Thiago', 'Mel', 1, 22,'F'), 
+	('Cássia', 'Rim', 2, 19 ,'M');
+
 select * from tbl_pessoa
+
+INSERT INTO tbl_pessoa VALUES ('Juca', 'Gargameu', 0, 30, 'M'); -- num_pet = 0, vai dar erro
