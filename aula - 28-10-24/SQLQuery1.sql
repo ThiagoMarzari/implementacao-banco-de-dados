@@ -1,0 +1,4 @@
+-- Restrições declarativas
+/*
+	
+*/
