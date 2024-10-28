@@ -1,4 +1,20 @@
 -- Restrições declarativas
 /*
-	
+	NOT NULL
+	UNIQUE
+	PRIMARY KEY
+	FOREIN KEY
+	CHECK
+	DEFAULT
+	CREATE INDEX
 */
+
+CREATE DATABASE AULA10;
+USE AULA10;
+
+CREATE TABLE tbl_pessoa(
+	id INT PRIMARY KEY IDENTITY(100, 10),
+	nome_pessoa VARCHAR(50),
+	nome_pet VARCHAR(50),
+	num_pet INT 
+)
