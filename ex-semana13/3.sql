@@ -5,12 +5,17 @@
 -- é excluido da tabela  Livro;
 
 
+CREATE TRIGGER exlcuir_livro_correspondente
+ON Livro
+AFTER DELETE
+AS
+BEGIN
+	DECLARE @isbn VARCHAR(50);
+	SELECT @isbn = D.isbn FROM deleted D; --Pegando o isbn do livro excluido
 
+	DELETE LivroAutor WHERE fk_livro = @isbn;
 
+	DELETE FROM Livro
+    WHERE isbn IN (SELECT L.isbn FROM deleted L);
 
-INSERT INTO Livro VALUES ('2532541012', 'Harry Potter e A Pedra', 2001, 1, 2);
-
-SELECT * FROM Livro;
-SELECT * FROM LivroAutor;
-
-DELETE Livro WHERE isbn = '2532541012';
+END
