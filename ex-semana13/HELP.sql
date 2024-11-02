@@ -12,8 +12,10 @@ ON LA.fk_livro = L.isbn;
 
 INSERT INTO Livro VALUES ('2031541012', 'A pedrinha', 2001, 2, 2);
 
-DELETE Livro WHERE isbn = '2031541012';
+DELETE Livro WHERE isbn = '8532511015';
 
 UPDATE Livro
 SET titulo = 'Juca o PROIBIDO'
 WHERE isbn = '2031541012';
+
+SELECT * FROM LogExclusaoLivros;
