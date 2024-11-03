@@ -12,3 +12,8 @@ SELECT F.Sexo, COUNT(F.Sexo) AS 'Quantidade'
 FROM FUNCIONARIO F
 GROUP BY F.Sexo
 HAVING COUNT(F.Sexo) <= 5
+
+SELECT F.Pnome, F.Datanasc
+FROM FUNCIONARIO F
+GROUP BY F.Datanasc, F.Pnome
+HAVING YEAR(F.Datanasc) >= 1975 AND YEAR(F.Datanasc) <= 2000
