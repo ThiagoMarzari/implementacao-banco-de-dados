@@ -9,7 +9,7 @@ VALUES ('Thiago', 'Marzari', '11345678966')
 SET @Error = @@ERROR;
 
 INSERT INTO DEPARTAMENTO (Dnome, Dnumero, Cpf_gerente, Data_inicio_gerente)
-VALUES('Marketing', 2, '98735432400', '2023-09-29')
+VALUES('Marketing', 8, '98735432400', '2023-09-29')
 
 SET @Error = @Error + @@ERROR;
 
