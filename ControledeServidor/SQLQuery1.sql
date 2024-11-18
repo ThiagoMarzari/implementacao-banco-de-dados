@@ -15,7 +15,16 @@ VALUES  ('Coca', 10),
 		('Cerveja Guarana', 15);
 
 
-GRANT INSERT ON [dbo].[BEBIDA] TO Juca;
+GRANT INSERT ON [dbo].[BEBIDA] TO Juca; --Da acesso para inserir na tabela bebida
+
+DENY SELECT ON [AULA00].[dbo].[VW_BEBIDA] TO Juca; --O juca nao pode mais ver essa view
+REVOKE SELECT ON [AULA00].[dbo].[VW_BEBIDA] TO Juca; --O juca nao pode mais ver essa view
+
+--POSSO DAR PERMISSOES PARA UM BANCO INTEIRO OU APENAS ALGUMAS VIEWS
+--GRANT - DOU PERMISSÕES [INSERT, UPDATE, SELECT, DELETE]
+--DENY - NEGO PERMISSÕES
+--REVOKE - REMOVO O DENY OU GRANT QUE TINHA DADO, TIRO A PERMISSÃO QUE TINHA DADO DE ANTES SEJA 
+--DE ACESSO OU NEGAÇÃO
 
 CREATE VIEW VW_BEBIDA
 AS select * from BEBIDA;
